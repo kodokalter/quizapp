@@ -5,6 +5,10 @@ body{
     min-height: 100vh;
     min-width: 100vw;
     flex-direction: column;
+    background-image: url("bg.svg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    font-family: 'Secular One', sans-serif;
 }
 .container{
     display: flex;
@@ -13,4 +17,11 @@ body{
 a{
     text-decoration: none;
     border: none;
+}
+.btn{
+    margin: 0;
+    border: none;
+}
+.card{
+    box-shadow: 0 0 10px 5px rgba(0, 0, 0, 0.1);
 }
