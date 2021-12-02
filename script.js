@@ -5,7 +5,7 @@ const data = [
         b: "Huruf f",
         c: "Huruf g",
         d: "Huruf a",
-        correct: "a"
+        correct: "d"
     },
     {
         question: 'Kalau ada bus kecelakaan, pesawat jatuh, ada kapal tenggelam, semuanya akan muncul di mana?',
@@ -21,7 +21,7 @@ const data = [
         b: "Meja",
         c: "Pak RT",
         d: "Om Faizul",
-        correct: "a"
+        correct: "b"
     },
     {
         question: 'Kenapa matahari bisa tenggelam?',
@@ -39,16 +39,18 @@ const c_text = document.getElementById('c');
 const d_text = document.getElementById('d');
 const submit = document.getElementById('submit');
 const card = document.getElementById('card');
-
-
+let point = 0;
 
 let currentData = 0;
-
+let currentAnswer = -1;
 const getAnswer = () => {
-    const answer = document.querySelectorAll('form-check-input');
-    answer.forEach((a) => {
-        console.log(a.checked)
-    })
+    const answer = document.querySelectorAll('.form-check-input');
+    for (let i = 0; i < answer.length; i++) {
+        if (answer[i].checked) {
+            return answer[i].value;
+        }
+    }
+
 }
 const loadQuiz = () => {
     currentQuizData = data[currentData];
@@ -60,11 +62,23 @@ const loadQuiz = () => {
 }
 
 submit.addEventListener("click", () => {
+    currentData++;
+    currentAnswer++;
     if (currentData < data.length) {
+        const ans = getAnswer();
+        console.log(currentData, ans, data[currentAnswer].correct, data.length)
+        if (ans == data[currentAnswer].correct) {
+            point++;
+            console.log(point);
+        }
         loadQuiz();
     } else {
-        card.innerHTML = "Sudah berhasil"
+        if(point<(data.length/2)){
+            card.innerHTML = "<h4>Maaf anda kurang receh</h4>"
+        }else{
+            card.innerHTML = "<h4>You got me brada! Bestie forever! Send me your jokes!</h4>"
+        }
     }
-    getAnswer();
-    currentData++;
 });
+loadQuiz()
+console.log(currentData)
