@@ -74,9 +74,9 @@ submit.addEventListener("click", () => {
         loadQuiz();
     } else {
         if(point<(data.length/2)){
-            card.innerHTML = "<h4>Maaf anda kurang receh</h4>"
+            card.innerHTML = `<h4>Maaf anda kurang receh, anda hanya benar ${point} dari ${data.length}</h4>`
         }else{
-            card.innerHTML = "<h4>You got me brada! Bestie forever! Send me your jokes!</h4>"
+            card.innerHTML = "<h4>You got me brada! Bestie forever! Send me your jokes! anda benar ${point} dari ${data.length}</h4>"
         }
     }
 });
